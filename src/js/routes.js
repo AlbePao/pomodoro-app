@@ -1,8 +1,6 @@
 
 import HomePage from '../pages/HomePage';
-import AboutPage from '../pages/AboutPage';
-import FormPage from '../pages/FormPage';
-import NotFoundPage from '../pages/NotFoundPage';
+import AboutPage from '../pages/TimerPage';
 
 const routes = [
   {
@@ -12,14 +10,6 @@ const routes = [
   {
     path: '/about/',
     component: AboutPage,
-  },
-  {
-    path: '/form/',
-    component: FormPage,
-  },
-  {
-    path: '(.*)',
-    component: NotFoundPage,
   },
 ];
 
