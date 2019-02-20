@@ -1,0 +1,14 @@
+# dependencies
+node_modules/
+
+# cordova stuff
+platforms/
+plugins/
+res/
+
+# production
+www/
+
+# Misc
+.DS_Store
+Thumbs.db
