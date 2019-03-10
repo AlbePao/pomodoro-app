@@ -1,6 +1,5 @@
-
 import HomePage from '../pages/HomePage';
-import AboutPage from '../pages/TimerPage';
+import TimerPage from '../pages/TimerPage';
 
 const routes = [
   {
@@ -8,8 +7,8 @@ const routes = [
     component: HomePage,
   },
   {
-    path: '/about/',
-    component: AboutPage,
+    path: '/timer/',
+    component: TimerPage,
   },
 ];
 
