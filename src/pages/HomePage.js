@@ -44,7 +44,11 @@ class HomePage extends Component {
 
   startTimer() {
     this.$f7router.navigate('/timer/', {
-      props: this.state,
+      props: {
+        activityDuration: this.state.activityDuration * 60000,
+        pauseDuration: this.state.pauseDuration * 60000,
+        totalRepetition: this.state.totalRepetition,
+      },
     });
   }
 

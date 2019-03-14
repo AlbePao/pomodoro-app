@@ -47,7 +47,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "template7": "^1.4.1"
+    "template7": "^1.4.1",
+    "tiny-timer": "^1.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
