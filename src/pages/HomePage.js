@@ -21,23 +21,17 @@ class HomePage extends Component {
     super(props);
 
     this.state = defaultState;
-
-    this.onChengeDuration = this.onChengeDuration.bind(this);
-    this.onChengePause = this.onChengePause.bind(this);
-    this.onChengeRepetition = this.onChengeRepetition.bind(this);
-    this.startTimer = this.startTimer.bind(this);
-    this.resetRange = this.resetRange.bind(this);
   }
 
-  onChengeDuration(value) {
+  onChangeDuration(value) {
     this.setState({ activityDuration: value });
   }
 
-  onChengePause(value) {
+  onChangePause(value) {
     this.setState({ pauseDuration: value });
   }
 
-  onChengeRepetition(value) {
+  onChangeRepetition(value) {
     this.setState({ totalRepetition: value });
   }
 
@@ -72,11 +66,11 @@ class HomePage extends Component {
         </BlockTitle>
         <Block strong>
           <Range
-            min={5}
+            min={1}
             max={90}
             step={5}
             value={this.state.activityDuration}
-            onRangeChange={this.onChengeDuration}
+            onRangeChange={this.onChangeDuration.bind(this)}
           />
           <p>
             Lorem ipsum dolor sit amet
@@ -95,7 +89,7 @@ class HomePage extends Component {
             max={30}
             step={5}
             value={this.state.pauseDuration}
-            onRangeChange={this.onChengePause}
+            onRangeChange={this.onChangePause.bind(this)}
           />
           <p>
             Lorem ipsum dolor sit amet
@@ -114,7 +108,7 @@ class HomePage extends Component {
             max={10}
             step={1}
             value={this.state.totalRepetition}
-            onRangeChange={this.onChengeRepetition}
+            onRangeChange={this.onChangeRepetition.bind(this)}
           />
           <p>
             Lorem ipsum dolor sit amet
@@ -124,10 +118,10 @@ class HomePage extends Component {
         <Block>
           <Row tag="p">
             <Col tag="span">
-              <Button large fill raised onClick={this.startTimer}>Start</Button>
+              <Button large fill raised onClick={this.startTimer.bind(this)} text="Start" />
             </Col>
             <Col tag="span">
-              <Button large fill raised onClick={this.resetRange}>Reset</Button>
+              <Button large fill raised onClick={this.resetRange.bind(this)} text="Reset" />
             </Col>
           </Row>
         </Block>
