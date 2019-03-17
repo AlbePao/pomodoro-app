@@ -27,6 +27,7 @@ class TimerPage extends Component {
     };
 
     this.timer = new Timer();
+    this.timerStopSound = new Audio('../static/timer_stop_sound.mp3');
   }
 
   componentDidMount() {
@@ -79,7 +80,9 @@ class TimerPage extends Component {
   }
 
   toggleActivity() {
-    // TODO: vibrate and beep
+    navigator.vibrate([250, 250, 250]);
+    this.timerStopSound.play();
+
     this.setState((prevState, props) => {
       return (
         prevState.inProgress === 'activity' ? {
