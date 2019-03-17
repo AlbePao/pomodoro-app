@@ -42,6 +42,10 @@ class HomePage extends Component {
     this.setState({ totalRepetition: value });
   }
 
+  pluralize(value) {
+    return value > 1 ? 's' : '';
+  }
+
   startTimer() {
     this.$f7router.navigate('/timer/', {
       props: {
@@ -67,7 +71,9 @@ class HomePage extends Component {
         {/* Page content */}
         <BlockTitle className="display-flex justify-content-space-between">
           Activity duration
-          <span>{this.state.activityDuration} minutes</span>
+          <span>
+            {this.state.activityDuration} minute{this.pluralize(this.state.activityDuration)}
+          </span>
         </BlockTitle>
         <Block strong>
           <Range
@@ -84,7 +90,9 @@ class HomePage extends Component {
 
         <BlockTitle className="display-flex justify-content-space-between">
           Pause duration
-          <span>{this.state.pauseDuration} minutes</span>
+          <span>
+            {this.state.pauseDuration} minute{this.pluralize(this.state.pauseDuration)}
+          </span>
         </BlockTitle>
         <Block strong>
           <Range
@@ -101,7 +109,9 @@ class HomePage extends Component {
 
         <BlockTitle className="display-flex justify-content-space-between">
           Repetition
-          <span>{this.state.totalRepetition}</span>
+          <span>
+            {this.state.totalRepetition} time{this.pluralize(this.state.totalRepetition)}
+          </span>
         </BlockTitle>
         <Block strong>
           <Range
