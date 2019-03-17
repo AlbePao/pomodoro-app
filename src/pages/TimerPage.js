@@ -27,7 +27,7 @@ class TimerPage extends Component {
     };
 
     this.timer = new Timer();
-    this.timerStopSound = new Audio('../static/timer_stop_sound.mp3');
+    this.timerStopSound = new Audio('./static/timer_stop_sound.mp3');
   }
 
   componentDidMount() {
@@ -39,11 +39,12 @@ class TimerPage extends Component {
   }
 
   componentWillUnmount() {
+    this.timerStopSound.pause();
+    this.timer.stop();
+
     if (this.$f7.device.cordova) {
       window.plugins.insomnia.allowSleepAgain();
     }
-
-    this.timer.stop();
   }
 
   millisToMinutesAndSeconds(millis) {
