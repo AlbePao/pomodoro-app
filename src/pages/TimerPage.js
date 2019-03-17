@@ -24,6 +24,7 @@ class TimerPage extends Component {
       rangeLabel: 'to the end of activity',
       rangeValue: 1,
       rangeText: this.millisToMinutesAndSeconds(this.props.activityDuration),
+      rangeColor: '#ff6347',
     };
 
     this.timer = new Timer();
@@ -86,16 +87,23 @@ class TimerPage extends Component {
           repetitionElapsed: prevState.repetitionElapsed + 1,
           inProgress: 'pause',
           rangeLabel: 'to the end of pause',
+          rangeColor: '#478eff',
         } : {
           time: props.activityDuration,
           inProgress: 'activity',
-          rangeLabel: 'to the end of activity'
+          rangeLabel: 'to the end of activity',
+          rangeColor: '#ff6347',
         }
       );
     });
 
     if (this.state.repetitionElapsed === this.props.totalRepetition) {
-      this.$f7.dialog.alert('Activity completed!', () => {
+      this.setState({
+        rangeLabel: 'to the end of activity',
+        rangeColor: '#ff6347',
+      });
+
+      this.$f7.dialog.alert('Session completed!', () => {
         this.$f7router.back();
       });
 
@@ -134,16 +142,17 @@ class TimerPage extends Component {
         <Navbar title="Pomodoro App" />
 
         <Block strong className="text-align-center">
-          {/* TODO: change borderColor according to activity/pause state and valueTextColor */}
           <Gauge
-            type="semicircle"
-            size={300}
-            valueFontSize={60}
+            type="circle"
+            size={320}
             labelText={this.state.rangeLabel}
+            labelFontSize={20}
             value={this.state.rangeValue}
             valueText={this.state.rangeText}
-            valueTextColor="green"
-            borderColor="blue"
+            valueFontSize={70}
+            valueTextColor={this.state.rangeColor}
+            borderWidth={10}
+            borderColor={this.state.rangeColor}
           />
         </Block>
 
