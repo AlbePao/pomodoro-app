@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   Page,
   Navbar,
-  NavTitle,
   Block,
   BlockTitle,
   Range,
@@ -63,12 +62,8 @@ class HomePage extends Component {
   render() {
     return (
       <Page name="home">
-        {/* Top Navbar */}
-        <Navbar>
-          <NavTitle>Pomodoro App</NavTitle>
-        </Navbar>
+        <Navbar title="Pomodoro App" />
 
-        {/* Page content */}
         <BlockTitle className="display-flex justify-content-space-between">
           Activity duration
           <span>
