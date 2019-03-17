@@ -53,7 +53,7 @@ class TimerPage extends Component {
 
     return (
       seconds === 60 ? (
-        (minutes < 10 ? '0' : '') + (minutes + 1) + ':00'
+        ((minutes + 1) < 10 ? '0' : '') + (minutes + 1) + ':00'
       ) : (
         (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds
       )
