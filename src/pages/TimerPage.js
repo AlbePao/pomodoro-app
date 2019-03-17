@@ -16,14 +16,14 @@ class TimerPage extends Component {
     super(props);
 
     this.state = {
-      time: this.props.activityDuration,
+      time: this.props.workDuration,
       repetitionElapsed: 0,
-      inProgress: 'activity',
+      session: 'work',
       isTimerStopped: false,
       buttonLabel: 'Pause',
-      rangeLabel: 'to the end of activity',
+      rangeLabel: 'to the end of work session',
       rangeValue: 1,
-      rangeText: this.millisToMinutesAndSeconds(this.props.activityDuration),
+      rangeText: this.millisToMinutesAndSeconds(this.props.workDuration),
       rangeColor: '#ff6347',
     };
 
@@ -72,26 +72,26 @@ class TimerPage extends Component {
     });
 
     this.timer.on('done', () => {
-      this.toggleActivity();
+      this.toggleSession();
     });
   }
 
-  toggleActivity() {
+  toggleSession() {
     navigator.vibrate([250, 250, 250]);
     this.timerStopSound.play();
 
     this.setState((prevState, props) => {
       return (
-        prevState.inProgress === 'activity' ? {
+        prevState.session === 'work' ? {
           time: props.pauseDuration,
           repetitionElapsed: prevState.repetitionElapsed + 1,
-          inProgress: 'pause',
-          rangeLabel: 'to the end of pause',
+          session: 'pause',
+          rangeLabel: 'to the end of pause session',
           rangeColor: '#478eff',
         } : {
-          time: props.activityDuration,
-          inProgress: 'activity',
-          rangeLabel: 'to the end of activity',
+          time: props.workDuration,
+          session: 'work',
+          rangeLabel: 'to the end of work session',
           rangeColor: '#ff6347',
         }
       );
@@ -99,7 +99,8 @@ class TimerPage extends Component {
 
     if (this.state.repetitionElapsed === this.props.totalRepetition) {
       this.setState({
-        rangeLabel: 'to the end of activity',
+        session: 'work',
+        rangeLabel: 'to the end of work session',
         rangeColor: '#ff6347',
       });
 
@@ -129,7 +130,7 @@ class TimerPage extends Component {
   quitTimer() {
     this.timer.pause();
 
-    this.$f7.dialog.confirm('Are you sure you want to quit the activity?', () => {
+    this.$f7.dialog.confirm('Are you sure you want to quit the session?', () => {
       this.$f7router.back();
     }, () => {
       this.timer.resume();
@@ -184,7 +185,7 @@ class TimerPage extends Component {
 }
 
 TimerPage.propTypes = {
-  activityDuration: PropTypes.number.isRequired,
+  workDuration: PropTypes.number.isRequired,
   pauseDuration: PropTypes.number.isRequired,
   totalRepetition: PropTypes.number.isRequired,
 };

@@ -11,7 +11,7 @@ import {
 } from 'framework7-react';
 
 const defaultState = {
-  activityDuration: 25,
+  workDuration: 25,
   pauseDuration: 5,
   totalRepetition: 4,
 };
@@ -24,7 +24,7 @@ class HomePage extends Component {
   }
 
   onChangeDuration(value) {
-    this.setState({ activityDuration: value });
+    this.setState({ workDuration: value });
   }
 
   onChangePause(value) {
@@ -42,7 +42,7 @@ class HomePage extends Component {
   startTimer() {
     this.$f7router.navigate('/timer/', {
       props: {
-        activityDuration: this.state.activityDuration * 60010,
+        workDuration: this.state.workDuration * 60010,
         pauseDuration: this.state.pauseDuration * 60010,
         totalRepetition: this.state.totalRepetition,
       },
@@ -59,9 +59,9 @@ class HomePage extends Component {
         <Navbar title="Pomodoro App" />
 
         <BlockTitle className="display-flex justify-content-space-between">
-          Activity duration
+          Work duration
           <span>
-            {this.state.activityDuration} minute{this.pluralize(this.state.activityDuration)}
+            {this.state.workDuration} minute{this.pluralize(this.state.workDuration)}
           </span>
         </BlockTitle>
         <Block strong>
@@ -69,7 +69,7 @@ class HomePage extends Component {
             min={1}
             max={90}
             step={5}
-            value={this.state.activityDuration}
+            value={this.state.workDuration}
             onRangeChange={this.onChangeDuration.bind(this)}
           />
           <p>
