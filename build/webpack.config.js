@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-
 const path = require('path');
 
 function resolvePath(dir) {
@@ -191,9 +190,6 @@ module.exports = {
         from: resolvePath('src/static'),
         to: resolvePath(isCordova ? 'cordova/www/static' : 'www/static'),
       },
-
     ]),
-
-
   ],
 };
