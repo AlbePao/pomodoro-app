@@ -72,9 +72,6 @@ class HomePage extends Component {
             value={this.state.workDuration}
             onRangeChange={this.onChangeDuration.bind(this)}
           />
-          <p>
-            Lorem ipsum dolor sit amet
-          </p>
         </Block>
 
         <BlockTitle className="display-flex justify-content-space-between">
@@ -91,9 +88,6 @@ class HomePage extends Component {
             value={this.state.pauseDuration}
             onRangeChange={this.onChangePause.bind(this)}
           />
-          <p>
-            Lorem ipsum dolor sit amet
-          </p>
         </Block>
 
         <BlockTitle className="display-flex justify-content-space-between">
@@ -110,9 +104,6 @@ class HomePage extends Component {
             value={this.state.totalRepetition}
             onRangeChange={this.onChangeRepetition.bind(this)}
           />
-          <p>
-            Lorem ipsum dolor sit amet
-          </p>
         </Block>
 
         <Block>
