@@ -30,14 +30,22 @@ class TimerPage extends Component {
   }
 
   componentDidMount() {
-    // TODO: disallow phone pause
     console.log('hi');
+
+    if (this.$f7.device.cordova) {
+      window.plugins.insomnia.keepAwake();
+    }
+
     this.startTimer();
   }
 
   componentWillUnmount() {
-    // TODO: allow phone pause
     console.log('bye');
+
+    if (this.$f7.device.cordova) {
+      window.plugins.insomnia.allowSleepAgain();
+    }
+
     this.timer.stop();
   }
 
