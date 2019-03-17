@@ -72,32 +72,27 @@ class TimerPage extends Component {
 
   toggleActivity() {
     // TODO: vibrate and beep
+    this.setState((prevState, props) => {
+      return (
+        prevState.inProgress === 'activity' ? {
+          time: props.pauseDuration,
+          repetitionElapsed: prevState.repetitionElapsed + 1,
+          inProgress: 'pause',
+          rangeLabel: 'to the end of pause',
+        } : {
+          time: props.activityDuration,
+          inProgress: 'activity',
+          rangeLabel: 'to the end of activity'
+        }
+      );
+    });
 
-    if (this.state.inProgress === 'activity') {
-      this.setState(prevState => ({
-        time: this.props.pauseDuration,
-        repetitionElapsed: ++prevState.repetitionElapsed,
-        inProgress: 'pause',
-        rangeLabel: 'to the end of pause',
-      }));
-
-      console.log('repetitionElapsed', this.state.repetitionElapsed);
-      console.log('totalRepetition', this.props.totalRepetition);
-
-      if (this.state.repetitionElapsed === this.props.totalRepetition) {
-        // FIXME: timer wont stop
-        this.timer.stop();
-
-        this.$f7.dialog.alert('Activity completed!', () => {
-          this.$f7router.back();
-        });
-      }
-    } else {
-      this.setState({
-        time: this.props.activityDuration,
-        inProgress: 'activity',
-        rangeLabel: 'to the end of activity'
+    if (this.state.repetitionElapsed === this.props.totalRepetition) {
+      this.$f7.dialog.alert('Activity completed!', () => {
+        this.$f7router.back();
       });
+
+      return;
     }
 
     this.timer.start(this.state.time);
