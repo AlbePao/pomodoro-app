@@ -31,8 +31,6 @@ class TimerPage extends Component {
   }
 
   componentDidMount() {
-    console.log('hi');
-
     if (this.$f7.device.cordova) {
       window.plugins.insomnia.keepAwake();
     }
@@ -41,8 +39,6 @@ class TimerPage extends Component {
   }
 
   componentWillUnmount() {
-    console.log('bye');
-
     if (this.$f7.device.cordova) {
       window.plugins.insomnia.allowSleepAgain();
     }
@@ -64,7 +60,6 @@ class TimerPage extends Component {
   }
 
   startTimer() {
-    console.log('timer started');
     this.timer.start(this.state.time);
 
     this.timer.on('tick', ms => {
