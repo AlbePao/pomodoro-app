@@ -119,8 +119,12 @@ class TimerPage extends Component {
   }
 
   quitTimer() {
+    this.timer.pause();
+
     this.$f7.dialog.confirm('Are you sure you want to quit the activity?', () => {
       this.$f7router.back();
+    }, () => {
+      this.timer.resume();
     });
   }
 
