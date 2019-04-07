@@ -19,7 +19,7 @@ const cordovaApp = {
   handleAndroidBackButton: () => {
     cordovaApp.backButtonTimestamp = new Date().getTime();
 
-    document.addEventListener('backbutton', (e) => {
+    document.addEventListener('backbutton', e => {
       if (new Date().getTime() - cordovaApp.backButtonTimestamp < 250) {
         cordovaApp.backButtonTimestamp = new Date().getTime();
         if (window.navigator.app && window.navigator.app.exitApp) {
