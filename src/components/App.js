@@ -28,6 +28,7 @@ class Main extends Component {
           overlay: this.$device.cordova && this.$device.ios || 'auto',
           iosOverlaysWebView: true,
           androidOverlaysWebView: false,
+          androidTextColor: 'white',
         },
       },
     };
