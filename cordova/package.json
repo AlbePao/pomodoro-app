@@ -12,6 +12,7 @@
   "dependencies": {
     "cordova-android": "^7.1.4",
     "cordova-ios": "^4.5.5",
+    "cordova-plugin-headercolor": "^1.0.0",
     "cordova-plugin-insomnia": "git+https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git",
     "cordova-plugin-keyboard": "^1.2.0",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -28,7 +29,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-insomnia": {},
-      "cordova-plugin-vibration": {}
+      "cordova-plugin-vibration": {},
+      "cordova-plugin-headercolor": {}
     },
     "platforms": [
       "ios",
