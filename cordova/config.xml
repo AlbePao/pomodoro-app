@@ -23,11 +23,9 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
-    <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
-    <plugin name="cordova-plugin-wkwebview-engine" spec="^1.1.4" />
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+
     <allow-navigation href="*" />
+
     <platform name="android">
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="android-minSdkVersion" value="21" />
@@ -50,6 +48,8 @@
         <icon density="xxhdpi" src="res/icon/android/mipmap-xxhdpi/ic_launcher.png" />
         <icon density="xxxhdpi" src="res/icon/android/mipmap-xxxhdpi/ic_launcher.png" />
     </platform>
+
+
     <platform name="ios">
         <config-file parent="CFBundleAllowMixedLocalizations" platform="ios" target="*-Info.plist">
             <true />
@@ -77,6 +77,8 @@
         <icon height="167" src="res/icon/ios/icon-83.5x83.5@2x.png" width="167" />
         <icon height="1024" src="res/icon/ios/icon-512x512@2x.png" width="1024" />
     </platform>
+
+
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackupWebStorage" value="local" />
@@ -86,8 +88,5 @@
     <preference name="Suppresses3DTouchGesture" value="true" />
     <preference name="Allow3DTouchLinkPreview" value="false" />
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
-    <plugin name="cordova-plugin-insomnia" spec="https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git" />
-    <plugin name="cordova-plugin-vibration" spec="^3.1.0" />
-    <engine name="ios" spec="^4.5.5" />
-    <engine name="android" spec="^7.1.4" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
 </widget>

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const path = require('path');
 
@@ -25,11 +25,12 @@ module.exports = {
     path: resolvePath(isCordova ? 'cordova/www' : 'www'),
     filename: 'js/app.js',
     publicPath: '',
+    hotUpdateChunkFilename: 'hot/hot-update.js',
+    hotUpdateMainFilename: 'hot/hot-update.json',
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
     alias: {
-      vue$: 'vue/dist/vue.esm.js',
       '@': resolvePath('src'),
     },
   },
@@ -41,8 +42,13 @@ module.exports = {
     contentBase: '/www/',
     disableHostCheck: true,
     watchOptions: {
-      poll: true,
+      poll: 1000,
     },
+  },
+  optimization: {
+    minimizer: [new TerserPlugin({
+      sourceMap: true,
+    })],
   },
   module: {
     rules: [
@@ -52,7 +58,6 @@ module.exports = {
         include: [
           resolvePath('src'),
           resolvePath('node_modules/framework7'),
-          resolvePath('node_modules/framework7-vue'),
           resolvePath('node_modules/framework7-react'),
           resolvePath('node_modules/template7'),
           resolvePath('node_modules/dom7'),
@@ -123,7 +128,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac|m4a)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
@@ -147,16 +152,6 @@ module.exports = {
     }),
 
     ...(env === 'production' ? [
-      // Production only plugins
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: {
-            warnings: false,
-          },
-        },
-        sourceMap: true,
-        parallel: true,
-      }),
       new OptimizeCSSPlugin({
         cssProcessorOptions: {
           safe: true,
