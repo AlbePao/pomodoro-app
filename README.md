@@ -18,7 +18,13 @@ npm i
 * `npm run prepare` - prepares Cordova project generating assets and installing required plugins
 * `npm start` - run development server
 * `npm run build-prod` - build web app for production
+* `npm run build-dev` - build web app using development mode (faster build without minification and optimization)
 * `npm run build-cordova-prod` - build cordova's `www` folder from and build cordova app
+* `npm run build-cordova-dev` - build cordova's `www` folder from and build cordova app using development mode (faster build without minification and optimization)
+* `npm run build-cordova-ios-prod` - build cordova's `www` folder from and build cordova iOS app
+* `npm run build-cordova-ios-dev` - build cordova's `www` folder from and build cordova iOS app using development mode (faster build without minification and optimization)
+* `npm run build-cordova-android-prod` - build cordova's `www` folder from and build cordova Android app
+* `npm run build-cordova-android-dev` - build cordova's `www` folder from and build cordova Android app using development mode (faster build without minification and optimization)
 * `npm run lint` - lint codebase in `src` directory
 
 ## Cordova
