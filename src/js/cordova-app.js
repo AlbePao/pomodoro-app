@@ -93,6 +93,13 @@ const cordovaApp = {
     }, true);
   },
 
+  /*
+  This method force screen orientation in portrait mode
+  */
+  handleScreenOrientation: () => {
+    window.screen.orientation.lock('portrait');
+  },
+
   init: f7 => {
     // Save f7 instance
     cordovaApp.f7 = f7;
@@ -105,6 +112,9 @@ const cordovaApp = {
 
     // Handle Keyboard
     cordovaApp.handleKeyboard();
+
+    // Handle Screen Orientation
+    cordovaApp.handleScreenOrientation();
   },
 };
 
