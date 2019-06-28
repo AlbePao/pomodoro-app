@@ -1,7 +1,7 @@
 {
   "name": "it.albertopaolucci.pomodoro",
   "displayName": "Pomodoro App",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "repository": "",
   "main": "index.js",
