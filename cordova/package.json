@@ -3,7 +3,7 @@
   "displayName": "Pomodoro App",
   "version": "1.1.1",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
-  "repository": "",
+  "repository": "https://github.com/AlbePao/pomodoro-app.git",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

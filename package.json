@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.1.1",
   "description": "Pomodoro App",
-  "repository": "",
+  "repository": "https://github.com/AlbePao/pomodoro-app.git",
   "license": "UNLICENSED",
   "framework7": {
     "cwd": "/Users/alberto-paolucci/Repositories/pomodoro-app",
