@@ -146,7 +146,9 @@ class TimerPage extends Component {
     this.$f7.dialog.confirm('Are you sure you want to quit the session?', () => {
       this.$f7router.back();
     }, () => {
-      this.timer.resume();
+      if (!this.state.isTimerStopped) {
+        this.resumeTimer();
+      }
     });
   }
 
