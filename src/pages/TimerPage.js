@@ -29,6 +29,11 @@ class TimerPage extends Component {
 
     this.timer = new Timer();
     this.timerStopSound = new Audio('./static/timer_stop_sound.mp3');
+
+    this.pauseTimer = this.pauseTimer.bind(this);
+    this.resumeTimer = this.resumeTimer.bind(this);
+    this.toggleTimer = this.toggleTimer.bind(this);
+    this.quitTimer = this.quitTimer.bind(this);
   }
 
   componentDidMount() {
@@ -76,6 +81,14 @@ class TimerPage extends Component {
     });
   }
 
+  pauseTimer() {
+    this.timer.pause();
+  }
+
+  resumeTimer() {
+    this.timer.resume();
+  }
+
   toggleSession() {
     navigator.vibrate([250, 250, 250]);
     this.timerStopSound.play();
@@ -116,9 +129,9 @@ class TimerPage extends Component {
 
   toggleTimer() {
     if (!this.state.isTimerStopped) {
-      this.timer.pause();
+      this.pauseTimer();
     } else {
-      this.timer.resume();
+      this.resumeTimer();
     }
 
     this.setState(prevState => ({
@@ -128,7 +141,7 @@ class TimerPage extends Component {
   }
 
   quitTimer() {
-    this.timer.pause();
+    this.pauseTimer();
 
     this.$f7.dialog.confirm('Are you sure you want to quit the session?', () => {
       this.$f7router.back();
@@ -164,7 +177,7 @@ class TimerPage extends Component {
                 large
                 fill
                 raised
-                onClick={this.toggleTimer.bind(this)}
+                onClick={this.toggleTimer}
                 text={this.state.buttonLabel}
               />
             </Col>
@@ -173,7 +186,7 @@ class TimerPage extends Component {
                 large
                 fill
                 raised
-                onClick={this.quitTimer.bind(this)}
+                onClick={this.quitTimer}
                 text="Stop and quit"
               />
             </Col>
