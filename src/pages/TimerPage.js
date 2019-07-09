@@ -42,6 +42,10 @@ class TimerPage extends Component {
     }
 
     this.startTimer();
+
+    document.addEventListener('backbutton', this.quitTimer);
+    document.addEventListener('pause', this.pauseTimer);
+    document.addEventListener('resume', this.resumeTimer);
   }
 
   componentWillUnmount() {
@@ -51,6 +55,10 @@ class TimerPage extends Component {
     if (this.$f7.device.cordova) {
       window.plugins.insomnia.allowSleepAgain();
     }
+
+    document.removeEventListener('backbutton', this.quitTimer);
+    document.removeEventListener('pause', this.pauseTimer);
+    document.removeEventListener('resume', this.resumeTimer);
   }
 
   millisToMinutesAndSeconds(millis) {
